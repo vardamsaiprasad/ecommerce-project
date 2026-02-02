@@ -1,15 +1,52 @@
 <<<<<<< HEAD
 console.log("E-Commerce Website Loaded");
 =======
-// Product data
-const products = [
-  { id: 1, name: "Wireless Headphones", price: 999, image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&h=200&fit=crop", description: "High-quality wireless headphones with noise cancellation." },
-  { id: 2, name: "Smart Watch", price: 1499, image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=200&h=200&fit=crop", description: "Feature-rich smart watch with health tracking." },
-  { id: 3, name: "Sneakers", price: 2999, image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=200&h=200&fit=crop", description: "Comfortable and stylish sneakers for everyday wear." },
-  { id: 4, name: "Laptop", price: 49999, image: "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=200&h=200&fit=crop", description: "Powerful laptop for work and entertainment." },
-  { id: 5, name: "Bluetooth Speaker", price: 1999, image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&h=200&fit=crop", description: "Portable Bluetooth speaker with excellent sound quality." },
-  { id: 6, name: "Fitness Tracker", price: 2499, image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=200&h=200&fit=crop", description: "Advanced fitness tracker with heart rate monitoring." }
-];
+// Fetch product data from API
+let products = [];
+
+async function fetchProducts() {
+  try {
+    const response = await fetch('https://fakestoreapi.com/products');
+    products = await response.json();
+    displayProducts();
+  } catch (error) {
+    console.error('Error fetching products:', error);
+    // Fallback to static data if API fails
+    products = [
+      { id: 1, title: "Wireless Headphones", price: 999, image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&h=200&fit=crop", description: "High-quality wireless headphones with noise cancellation." },
+      { id: 2, title: "Smart Watch", price: 1499, image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=200&h=200&fit=crop", description: "Feature-rich smart watch with health tracking." },
+      { id: 3, title: "Sneakers", price: 2999, image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=200&h=200&fit=crop", description: "Comfortable and stylish sneakers for everyday wear." },
+      { id: 4, title: "Laptop", price: 49999, image: "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=200&h=200&fit=crop", description: "Powerful laptop for work and entertainment." },
+      { id: 5, title: "Bluetooth Speaker", price: 1999, image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&h=200&fit=crop", description: "Portable Bluetooth speaker with excellent sound quality." },
+      { id: 6, title: "Fitness Tracker", price: 2499, image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=200&h=200&fit=crop", description: "Advanced fitness tracker with heart rate monitoring." }
+    ];
+    displayProducts();
+  }
+}
+
+function displayProducts() {
+  const productsSection = document.querySelector('.products');
+  if (productsSection) {
+    productsSection.innerHTML = '';
+    products.slice(0, 6).forEach(product => {
+      productsSection.innerHTML += `
+        <div class="card">
+          <a href="product-details.html?id=${product.id}"><img src="${product.image}" alt="${product.title}"></a>
+          <h3>${product.title}</h3>
+          <p>₹${product.price}</p>
+          <button data-id="${product.id}">Add to Cart</button>
+        </div>
+      `;
+    });
+    // Re-attach event listeners
+    document.querySelectorAll('.card button').forEach(button => {
+      button.addEventListener('click', () => {
+        const productId = parseInt(button.getAttribute('data-id'));
+        addToCart(productId);
+      });
+    });
+  }
+}
 
 // Authentication
 let currentUser = JSON.parse(localStorage.getItem('currentUser')) || null;
@@ -157,3 +194,6 @@ if ('serviceWorker' in navigator) {
 updateCartCount();
 console.log("E-Commerce App Ready for Deployment");
 >>>>>>> d987f4bf1f4930bbc47d1ec927059232532ce95b
+>>>>>>> d987f4bf1f4930bbc47d1ec927059232532ce95b
+    return;
+    return;
