@@ -1,11 +1,17 @@
+  "scripts": {
+    "start": "npx serve ."
+  }
+}
+>>>>>>> d987f4bf1f4930bbc47d1ec927059232532ce95b
+=======
 {
   "name": "ecommerce-frontend",
   "version": "1.0.0",
-<<<<<<< HEAD
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx serve ."
   },
   "keywords": [],
   "author": "",
