@@ -41,13 +41,18 @@ function createProductCard(product) {
     title.textContent = product.title;
 
     const price = document.createElement('p');
-    price.textContent = `$${product.price}`;
+    price.textContent = `₹${(product.price * 83).toFixed(2)}`;
 
     const button = document.createElement('button');
     button.textContent = 'Add to Cart';
-    button.addEventListener('click', () => {
-        // Placeholder for add to cart functionality
-        alert(`Added ${product.title} to cart!`);
+    button.addEventListener('click', (e) => {
+        e.stopPropagation(); // Prevent card click
+        addToCart(product);
+    });
+
+    // Make the entire card clickable except the button
+    card.addEventListener('click', () => {
+        window.location.href = `product.html?id=${product.id}`;
     });
 
     card.appendChild(img);
@@ -57,6 +62,33 @@ function createProductCard(product) {
 
     return card;
 }
+
+function addToCart(product) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const existingItem = cart.find(item => item.id === product.id);
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({ id: product.id, title: product.title, price: product.price, image: product.image, quantity: 1 });
+    }
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
+    alert(`Added ${product.title} to cart!`);
+}
+
+function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const cartCountElement = document.querySelector('.cart-count');
+    if (cartCountElement) {
+        cartCountElement.textContent = totalItems;
+    }
+}
+
+// Update cart count on page load
+document.addEventListener('DOMContentLoaded', () => {
+    updateCartCount();
+});
 
 function hideLoading() {
     loading.style.display = 'none';
