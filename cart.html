@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Commerce Frontend</title>
+    <title>Cart - E-Commerce Frontend</title>
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
@@ -33,17 +33,16 @@
   </div>
 </header>
 
-<section class="hero">
-  <h2>Shop Smart, Shop Online</h2>
-  <p>Best deals on all products</p>
-  <a href="#products" class="cta-button">Shop Now</a>
-</section>
-
-<section id="products" class="products">
-  <h2>Our Products</h2>
-  <div id="product-grid" class="product-grid"></div>
-  <p id="loading" class="loading">Loading products...</p>
-  <p id="error" class="error" style="display: none;">Failed to load products. Please try again later.</p>
+<section class="cart">
+  <h2>Your Cart</h2>
+  <div id="cart-items" class="cart-items"></div>
+  <div class="cart-total">
+    <h3>Total: ₹<span id="total-price">0.00</span></h3>
+  </div>
+  <div class="cart-actions">
+    <button id="continue-shopping" class="btn">Continue Shopping</button>
+    <button id="proceed-checkout" class="btn">Proceed to Checkout</button>
+  </div>
 </section>
 
 <footer>
@@ -51,6 +50,6 @@
 </footer>
 
     <script src="scripts/app.js"></script>
-    <script src="scripts/products.js"></script>
+    <script src="scripts/cart.js"></script>
 </body>
 </html>

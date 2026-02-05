@@ -76,19 +76,7 @@ function addToCart(product) {
     alert(`Added ${product.title} to cart!`);
 }
 
-function updateCartCount() {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-    const cartCountElement = document.querySelector('.cart-count');
-    if (cartCountElement) {
-        cartCountElement.textContent = totalItems;
-    }
-}
 
-// Update cart count on page load
-document.addEventListener('DOMContentLoaded', () => {
-    updateCartCount();
-});
 
 function hideLoading() {
     loading.style.display = 'none';

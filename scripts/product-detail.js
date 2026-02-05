@@ -143,17 +143,7 @@ document.getElementById('add-to-cart-btn').addEventListener('click', () => {
     }, 3000);
 });
 
-function updateCartCount() {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-    const cartCountElement = document.querySelector('.cart-count');
-    if (cartCountElement) {
-        cartCountElement.textContent = totalItems;
-    }
-}
-
 // Load product on page load
 document.addEventListener('DOMContentLoaded', () => {
     loadProduct();
-    updateCartCount();
 });

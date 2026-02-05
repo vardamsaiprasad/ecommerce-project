@@ -16,3 +16,28 @@
 - [x] Better Add-to-Cart feedback (message/animation, save quantity/variation)
 - [x] Ensure mobile usability (touch-friendly, zoom/selectors work on phone)
 - [x] Final testing: All interactions work, no console errors, cart persists after refresh
+
+# TASK 5 Implementation TODO
+
+## Subtask 1: Cart Icon Navigation
+- [x] Edit index.html: Make cart icon clickable to link to cart.html
+- [x] Edit product.html: Make cart icon clickable to link to cart.html
+
+## Subtask 2: Cart Page Creation
+- [x] Create cart.html with same header, navbar, footer as other pages
+- [x] Create scripts/cart.js: Load and display cart items from localStorage
+- [x] Create scripts/cart.js: Allow quantity increase/decrease with live total update
+- [x] Create scripts/cart.js: Add remove button for each item
+- [x] Create scripts/cart.js: Display cart total price dynamically
+- [x] Create scripts/cart.js: Add "Continue Shopping" and "Proceed to Checkout" buttons
+
+## Subtask 3: Code Cleanup
+- [x] Remove duplicate updateCartCount from scripts/products.js
+- [x] Remove duplicate updateCartCount from scripts/product-detail.js
+
+## Subtask 4: Testing
+- [x] Test cart persistence after refresh and across pages
+- [x] Test dynamic cart count updates
+- [x] Test cart page functionality (quantity, remove, total)
+- [x] Ensure no UI changes from Task 4
+- [x] Add cart page styles to main.css
